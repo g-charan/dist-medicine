@@ -1,4 +1,5 @@
 "use client";
+import TopNavbar from "@/components/TopNavbar";
 import Image from "next/image";
 import { useState } from "react";
 import img1 from "../assets/logo.png";
@@ -21,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="flex">
+        <div className="flex overflow-hidden">
           <div
             className={` ${
               open ? "w-72" : "w-20 "
@@ -67,7 +68,12 @@ export default function RootLayout({
               ))}
             </ul>
           </div>
-          <div className="flex-1 p-7 h-screen">{children}</div>
+          <div className="flex-col w-full">
+            <div className="p-2">
+              <TopNavbar />
+            </div>
+            <div className="flex-1 p-7 h-full">{children}</div>
+          </div>
         </div>
       </body>
     </html>

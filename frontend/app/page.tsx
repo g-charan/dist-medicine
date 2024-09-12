@@ -8,10 +8,10 @@ export default function Home() {
           <div className="flex flex-row justify-between items-center bg-white py-3 border-b-2 w-full text-lg">
             <div className="px-5 text-2xl">C</div>
             <div className="xl:flex xl:gap-20 hidden">
-              <CustomButton />
-              <CustomButton />
-              <CustomButton />
-              <CustomButton />
+              <CustomButton>Hello</CustomButton>
+              <CustomButton>Hello</CustomButton>
+              <CustomButton>Hello</CustomButton>
+              <CustomButton>Hello</CustomButton>
             </div>
           </div>
         </div>
