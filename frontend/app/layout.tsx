@@ -10,7 +10,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div>
-          <div className="flex-1 p-7 h-screen">{children}</div>
+          <div className="flex-1 p-7 h-screen overflow-hidden">{children}</div>
         </div>
       </body>
     </html>
