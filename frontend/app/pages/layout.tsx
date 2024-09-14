@@ -11,7 +11,7 @@ export default function RootLayout({
   const [open, setOpen] = useState(true);
   const Menus = [
     { title: "Dashboard", src: "Chart_fill" },
-    { title: "Inbox", src: "Chat" },
+    { title: "Inventory", src: "pages/dashboard" },
     { title: "Accounts", src: "User", gap: true },
     { title: "Schedule ", src: "Calendar" },
     { title: "Search", src: "Search" },
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="flex overflow-hidden">
+        <div className="flex overflow-hidden ">
           <div
             className={` ${
               open ? "w-72" : "w-20 "
@@ -68,11 +68,11 @@ export default function RootLayout({
               ))}
             </ul>
           </div>
-          <div className="flex-col w-full">
+          <div className="flex-col w-5/6">
             <div className="p-2">
               <TopNavbar />
             </div>
-            <div className="flex-1 p-7 h-full">{children}</div>
+            <div className="flex-1 p-7 h-full ">{children}</div>
           </div>
         </div>
       </body>
