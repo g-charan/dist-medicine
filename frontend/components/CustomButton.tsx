@@ -1,14 +1,14 @@
 type customprops = {
   className?: string;
   children?: any;
-  onclick?: any;
+  onClick?: any;
 };
 
-const CustomButton = ({ className, children, onclick }: customprops) => {
+const CustomButton = ({ className, children, onClick }: customprops) => {
   return (
-    <div>
+    <div className="h-full">
       <button
-        onClick={onclick}
+        onClick={onClick}
         className={` ${className} border-[1px] bg-black hover:bg-white px-4  border-black rounded-[0.25rem] text-white hover:text-black transition-all duration-[250ms]`}
       >
         {children}
