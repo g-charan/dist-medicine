@@ -202,12 +202,9 @@ export default function TablePage() {
         </div>
 
         <div className="border-t border-gray-200 px-4 py-4 sm:px-6">
-          <button
-            className="bg-[rgb(88,28,135)] text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:text-sm"
-            onClick={() => setfilter(false)}
-          >
+          <CustomButton onClick={() => setfilter(false)}>
             Apply Filter
-          </button>
+          </CustomButton>
         </div>
       </Sidebar>
       {/* Buttons */}
