@@ -7,8 +7,7 @@ export default function MainLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <div className="flex w-screen h-screen overflow-hidden">
+ <div className="flex w-screen h-screen overflow-hidden">
       <div>
         <Sidebar />
       </div>
