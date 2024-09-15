@@ -8,10 +8,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-body">
-        <div>
-          <div className="flex-1 p-7 h-screen">{children}</div>
-        </div>
+      <body>
+        <div>{children}</div>
       </body>
     </html>
   );

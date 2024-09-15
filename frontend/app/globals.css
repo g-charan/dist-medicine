@@ -4,26 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
+input:focus ~ .input-text {
+  @apply text-blue-600 transform -translate-y-5 -translate-x-2 scale-75 bg-white font-semibold;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+input:not(:placeholder-shown) ~ .input-text {
+  @apply text-black transform -translate-y-5 -translate-x-2 scale-75 bg-white font-semibold;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+input:not(:placeholder-shown):focus ~ .input-text {
+  @apply text-blue-600 transform -translate-y-5 -translate-x-2 scale-75 bg-white font-semibold;
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-} */
