@@ -41,6 +41,7 @@ export default function MainLayout({
         { title: "View Testings", route: "" },
         { title: "Request New Testing", route: "" },
         { title: "Testing Status", route: "" },
+        { title: "View Laboratories", route: "" },
       ],
     },
     {
@@ -48,8 +49,8 @@ export default function MainLayout({
       src: Search,
       submenu: [
         { title: "View Vendors", route: "" },
-        { title: "Market Place", route: "" },
-        { title: "Testing Status", route: "" },
+        { title: "Market place", route: "" },
+        { title: "Feedback", route: "" },
       ],
     },
     { title: "Analytics", src: Chart, route: "/Analytics" },
