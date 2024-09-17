@@ -165,7 +165,7 @@ export default function TablePage() {
     console.log("updated");
   }, [selectedMedicine]);
   return (
-    <div className=" w-full h-full overflow-auto">
+    <div className=" w-full h-full overflow-hidden">
       {/* SideBars */}
       <Sidebar
         visible={addingnew}

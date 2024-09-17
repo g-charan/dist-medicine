@@ -1,7 +1,10 @@
 "use client";
 
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import "./globals.css";
+
+const queryClient = new QueryClient();
 
 export default function RootLayout({
   children,
@@ -11,7 +14,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div>{children}</div>
+        <QueryClientProvider client={queryClient}>
+          <div>{children}</div>
+        </QueryClientProvider>
       </body>
     </html>
   );

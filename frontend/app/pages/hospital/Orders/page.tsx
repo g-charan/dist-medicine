@@ -239,7 +239,7 @@ export default function TablePage() {
           </div>
         </div>
       </div>
-      <table className="table-auto mx-2 w-full overflow-auto">
+      <table className="table-auto mx-2 w-full overflow-hidden">
         <thead>
           <tr>
             <th className="">Item ID</th>
