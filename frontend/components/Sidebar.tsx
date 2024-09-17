@@ -1,28 +1,59 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { createContext, useState } from "react";
 import Cal from "../../frontend/app/assets/Calendar.png";
 import Chart from "../../frontend/app/assets/Chart.png";
 import Chart_fill from "../../frontend/app/assets/Chart_fill.png";
 import Chat from "../../frontend/app/assets/Chat.png";
 import arrow from "../../frontend/app/assets/control.png";
-import Folder from "../../frontend/app/assets/Folder.png";
 import logo from "../../frontend/app/assets/logo.png";
 import Search from "../../frontend/app/assets/Search.png";
-import Setting from "../../frontend/app/assets/Setting.png";
 import user from "../../frontend/app/assets/User.png";
+import SidebarItem from "./SidebarItem";
+
+export const SidebarContext = createContext<any>(false);
 
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
   const MENUS = [
     { title: "Dashboard", src: Chart_fill },
-    { title: "Inbox", src: Chat },
-    { title: "Accounts", src: user, gap: true },
-    { title: "Schedule ", src: Cal },
-    { title: "Search", src: Search },
-    { title: "Analytics", src: Chart },
-    { title: "Files ", src: Folder, gap: true },
-    { title: "Setting", src: Setting },
+    {
+      title: "Inventory",
+      src: Chat,
+      submenu: [
+        { title: "View inventory", route: "/pages/hospital/Inventory" },
+        { title: "Inventory Statistics", route: "/pages/hospital/Inventory" },
+      ],
+    },
+    {
+      title: "Orders",
+      src: user,
+      submenu: [
+        { title: "View Orders", route: "/pages/hospital/Orders" },
+        { title: "Request New Order", route: "/pages/hospital/Inventory" },
+        { title: "Orders status", route: "/pages/hospital/Inventory" },
+        { title: "Track your order", route: "/pages/hospital/Inventory" },
+      ],
+    },
+    {
+      title: "Testings",
+      src: Cal,
+      submenu: [
+        { title: "View Testings", route: "" },
+        { title: "Request New Testing", route: "" },
+        { title: "Testing Status", route: "" },
+      ],
+    },
+    {
+      title: "Vendors",
+      src: Search,
+      submenu: [
+        { title: "View Vendors", route: "" },
+        { title: "Market Place", route: "" },
+        { title: "Testing Status", route: "" },
+      ],
+    },
+    { title: "Analytics", src: Chart, route: "/Analytics" },
   ];
   return (
     <div
@@ -53,16 +84,11 @@ const Sidebar = () => {
       </div>
       <ul className="pt-6">
         {MENUS.map((Menu, index) => (
-          <li
-            key={index}
-            className={`flex  rounded-md p-2 cursor-pointer hover:bg-white text-white hover:text-black text-sm items-center gap-x-4 
-              ${Menu.gap ? "mt-9" : "mt-2"}  `}
-          >
-            <Image alt="smtg" src={Menu.src} />
-            <span className={`${!open && "hidden"} origin-left duration-200`}>
-              {Menu.title}
-            </span>
-          </li>
+          <>
+            <SidebarContext.Provider value={[open, setOpen]}>
+              <SidebarItem Menu={Menu} index={index} />
+            </SidebarContext.Provider>
+          </>
         ))}
       </ul>
     </div>
