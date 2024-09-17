@@ -1,17 +1,17 @@
-type customprops = {
+type CustomProps = {
   className?: string;
-  children?: any;
-  onClick?: any;
-  type?: any;
+  children?: React.ReactNode; // Ensure proper typing for children
+  onClick?: React.MouseEventHandler<HTMLButtonElement>; // Correct typing for onClick
+  style?: React.CSSProperties; // Added 'style' prop type
 };
 
-const CustomButton = ({ className, children, onClick, type }: customprops) => {
+const CustomButton = ({ className, children, onClick, style }: CustomProps) => {
   return (
     <div className="h-full">
       <button
-        type={type}
+        style={style} // Ensure the style prop is applied
         onClick={onClick}
-        className={` ${className} border-[1px] bg-black hover:bg-white px-4  border-black rounded-[0.25rem] text-white hover:text-black transition-all duration-[250ms]`}
+        className={` ${className} border-[1px] bg-black hover:bg-white px-4 border-black rounded-[0.25rem] text-white hover:text-black transition-all duration-[250ms]`}
       >
         {children}
       </button>
