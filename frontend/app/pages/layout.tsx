@@ -14,11 +14,11 @@ export default function MainLayout({
         <Sidebar />
       </div>
 
-      <div className="w-full">
-        <div className="p-2">
+      <div className="w-full h-full">
+        <div className="p-2 h-[2.5rem]">
           <TopNavbar />
         </div>
-        <div className="px-7 py-4 w-full h-full">{children}</div>
+        <div className="my-4 px-7 w-full h-[92%]">{children}</div>
       </div>
     </div>
   );

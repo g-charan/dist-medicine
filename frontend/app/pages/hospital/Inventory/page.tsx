@@ -3,24 +3,26 @@ import CustomButton from "@/components/CustomButton";
 import Addnew from "@/components/Inventory/Addnew";
 import MedicineDetails from "@/components/Inventory/MedicineDetails";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import { Sidebar } from "primereact/sidebar";
 import React, { useEffect, useState } from "react";
 import Select, { MultiValue } from "react-select";
 
-interface Medicine {
-  id: string;
+export interface Medicine {
+  id: number | undefined;
   name: string;
   batch: string;
   manufacturer: string;
   expiry: string;
   manufactured: string;
-  quantity: number;
+  quantity: number | undefined;
   category: string;
-  reorderLevel: number;
-  reorderQuantity: number;
+  reorderLevel: number | undefined;
+  reorderQuantity: number | undefined;
   status: string;
-  minStockLevel: number;
-  maxStockLevel: number;
+  minStockLevel: number | undefined;
+  maxStockLevel: number | undefined;
   storageLocation: string;
   tempRequirements: string;
   certification: string;
@@ -32,43 +34,19 @@ export default function TablePage() {
     null
   );
 
+  const getposts = async () => {
+    try {
+      const data = await axios.get("http://localhost:5000/medicine");
+      console.log(tableMainData);
+      return data.data;
+    } catch (error) {}
+  };
+  const { data: tableMainData, refetch } = useQuery({
+    queryKey: ["medicinerecords"],
+    queryFn: getposts,
+  });
+
   const tableData: Medicine[] = [
-    {
-      id: "#001",
-      name: "Paracetamol 500mg",
-      batch: "PN2024A",
-      manufacturer: "PharmaCo",
-      expiry: "2025-06-30",
-      manufactured: "2023-06-01",
-      quantity: 1000,
-      category: "Tablet",
-      reorderLevel: 200,
-      reorderQuantity: 500,
-      status: "In Stock",
-      minStockLevel: 100,
-      maxStockLevel: 1500,
-      storageLocation: "Rack 5 / Shelf 3",
-      tempRequirements: "Store at 25°C",
-      certification: "GMP Certified",
-    },
-    {
-      id: "#001",
-      name: "Dolo 650",
-      batch: "PN2024A",
-      manufacturer: "PharmaCo",
-      expiry: "2025-06-30",
-      manufactured: "2023-06-01",
-      quantity: 1000,
-      category: "Tablet",
-      reorderLevel: 200,
-      reorderQuantity: 500,
-      status: "In Stock",
-      minStockLevel: 100,
-      maxStockLevel: 1500,
-      storageLocation: "Rack 5 / Shelf 3",
-      tempRequirements: "Store at 31°C",
-      certification: "GMP Certified",
-    },
     // ...other data
   ];
 
@@ -157,15 +135,15 @@ export default function TablePage() {
 
   const setSelection = (item: any) => {
     setSelectedMedicine(item);
-
     setdetails(true);
   };
 
   useEffect(() => {
     console.log("updated");
-  }, [selectedMedicine]);
+    refetch();
+  }, [selectedMedicine, details, setSelection]);
   return (
-    <div className=" w-full h-full overflow-auto">
+    <div className=" w-full h-full overflow-hidden">
       {/* SideBars */}
       <Sidebar
         visible={addingnew}
@@ -173,7 +151,7 @@ export default function TablePage() {
         onHide={() => setaddingNew(false)}
         className="bg-white  text-black w-[75%]  border-black"
       >
-        <Addnew />
+        <Addnew setAdding={setaddingNew} />
       </Sidebar>
       <Sidebar
         visible={details}
@@ -239,7 +217,7 @@ export default function TablePage() {
           </div>
         </div>
       </div>
-      <table className="table-auto mx-2 w-full overflow-auto">
+      <table className="table-auto mx-2 w-full overflow-hidden">
         <thead>
           <tr>
             <th className="">Item ID</th>
@@ -258,27 +236,28 @@ export default function TablePage() {
           </tr>
         </thead>
         <tbody>
-          {tableData.map((item, index) => (
-            <tr
-              key={index}
-              className="hover:bg-gray-100 cursor-pointer border-t-2 border-b-2"
-              onClick={() => setSelection(item)}
-            >
-              <td className="text-center ">{item.id}</td>
-              <td className="text-center ">{item.name}</td>
-              <td className=" text-center">{item.batch}</td>
-              <td className=" text-center">{item.manufacturer}</td>
-              <td className=" text-center">{item.expiry}</td>
-              <td className=" text-center">{item.manufactured}</td>
-              <td className=" text-center">{item.quantity}</td>
-              <td className=" text-center">{item.category}</td>
+          {tableMainData &&
+            tableMainData.map((item: Medicine, index: any) => (
+              <tr
+                key={index}
+                className="hover:bg-gray-100 cursor-pointer border-t-2 border-b-2"
+                onClick={() => setSelection(item)}
+              >
+                <td className="text-center ">{item.id}</td>
+                <td className="text-center ">{item.name}</td>
+                <td className=" text-center">{item.batch}</td>
+                <td className=" text-center">{item.manufacturer}</td>
+                <td className=" text-center">{item.expiry}</td>
+                <td className=" text-center">{item.manufactured}</td>
+                <td className=" text-center">{item.quantity}</td>
+                <td className=" text-center">{item.category}</td>
 
-              <td className=" text-center">{item.reorderQuantity}</td>
+                <td className=" text-center">{item.reorderQuantity}</td>
 
-              <td className=" text-center">{item.minStockLevel}</td>
-              <td className=" text-center">{item.maxStockLevel}</td>
-            </tr>
-          ))}
+                <td className=" text-center">{item.minStockLevel}</td>
+                <td className=" text-center">{item.maxStockLevel}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>
