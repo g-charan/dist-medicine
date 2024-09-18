@@ -73,7 +73,7 @@ export default function HospitalLayout({
       </div>
 
       <div className="w-full h-full">
-        <div className="p-2 h-[2.5rem]">
+        <div className="p-3 h-fit">
           <Header toggleMobileSidebar={() => setMobileSidebarOpen(true)} />
         </div>
         <div className="my-4 px-7 w-full h-[92%]">{children}</div>
