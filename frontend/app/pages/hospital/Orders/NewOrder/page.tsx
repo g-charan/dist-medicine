@@ -9,7 +9,7 @@ import { useRef } from "react";
 const page = () => {
   const stepperRef = useRef<any>(null);
   return (
-    <div className="card h-full">
+    <div className="card h-full overflow-auto">
       <Stepper ref={stepperRef}>
         <StepperPanel header="Initial Form">
           <div className="flex flex-column h-fit  w-full">
