@@ -40,9 +40,10 @@ const SidebarItem = ({ Menu, index }: any) => {
       </li>
       {Menu.submenu && submenuOpen && (
         <ul className={`${!open && "hidden"} flex flex-col px-6`}>
-          {Menu.submenu.map((data: any) => (
+          {Menu.submenu.map((data: any, index: any) => (
             <Link href={`${data.route}`}>
               <li
+                key={index}
                 className={`flex  rounded-md p-2 cursor-pointer hover:bg-white text-white hover:text-black text-sm items-center gap-x-4  `}
               >
                 {data.title}
