@@ -38,7 +38,7 @@ export default function HospitalLayout({
           route: "/pages/hospital/Orders/NewOrder",
         },
         { title: "Orders status", route: "/pages/hospital/Orders/Status" },
-        { title: "Track your order", route: "/pages/hospital/Orders/Tracking" },
+        { title: "Track your order", route: "/pages/hospital/Inventory" },
       ],
     },
     {
@@ -46,6 +46,7 @@ export default function HospitalLayout({
       src: Cal,
       submenu: [
         { title: "View Testings", route: "/pages/hospital/Testing" },
+        { title: "Testing Requests", route: "/pages/Labs/Testing/Requests" },
         {
           title: "Request New Testing",
           route: "/pages/hospital/Testing/NewTesting",
