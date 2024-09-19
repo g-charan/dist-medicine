@@ -1,3 +1,5 @@
+import TimelineComponent from "../Testing/TimelineComponent";
+
 const MedicineDetails = ({ selectedMedicine }: any) => {
   return (
     <div className="w-full text-left">
@@ -42,6 +44,10 @@ const MedicineDetails = ({ selectedMedicine }: any) => {
         <p>
           <strong>Certification:</strong> {selectedMedicine.certification}
         </p>
+      </div>
+      <div className="flex flex-col justify-center col-span-4 row-span-2 mt-10">
+        <p className="mx-8">Order Details</p>
+        <TimelineComponent />
       </div>
     </div>
   );
