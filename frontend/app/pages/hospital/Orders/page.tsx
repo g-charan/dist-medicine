@@ -179,7 +179,7 @@ export default function TablePage() {
         visible={details}
         position="right"
         onHide={() => setdetails(false)}
-        className="bg-white  text-black w-[75%]  border-black"
+        className="bg-white  text-black w-[25%]  border-black"
       >
         <MedicineDetails selectedMedicine={selectedMedicine} />
       </Sidebar>

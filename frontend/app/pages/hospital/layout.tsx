@@ -2,8 +2,8 @@
 
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 
-import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
+import TopNavbar from "@/components/TopNavbar";
 import { useState } from "react";
 import Cal from "../../assets/Calendar.png";
 import Chart from "../../assets/Chart.png";
@@ -19,13 +19,16 @@ export default function HospitalLayout({
 }>) {
   const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const MENUS = [
-    { title: "Dashboard", src: Chart_fill },
+    { title: "Dashboard", src: Chart_fill, route: "/pages/hospital/Dashboard" },
     {
       title: "Inventory",
       src: Chat,
       submenu: [
         { title: "View inventory", route: "/pages/hospital/Inventory" },
-        { title: "Inventory Statistics", route: "/pages/hospital/Inventory" },
+        {
+          title: "Inventory Statistics",
+          route: "/pages/hospital/Inventory/statistics",
+        },
       ],
     },
     {
@@ -33,12 +36,12 @@ export default function HospitalLayout({
       src: user,
       submenu: [
         { title: "View Orders", route: "/pages/hospital/Orders" },
-        {
-          title: "Request New Order",
-          route: "/pages/hospital/Orders/NewOrder",
-        },
-        { title: "Orders status", route: "/pages/hospital/Orders/Status" },
-        { title: "Track your order", route: "/pages/hospital/Orders/Tracking" },
+        // {
+        //   title: "Request New Order",
+        //   route: "/pages/hospital/Orders/NewOrder",
+        // },
+        // { title: "Orders status", route: "/pages/hospital/Orders/Status" },
+        { title: "Track your order", route: "/pages/hospital/Orders/Status" },
       ],
     },
     {
@@ -59,11 +62,17 @@ export default function HospitalLayout({
       src: Search,
       submenu: [
         { title: "View Vendors", route: "/pages/hospital/Vendors" },
-        { title: "Market place", route: "" },
+        { title: "Market place", route: "/pages/hospital/Vendors/Market" },
         { title: "Feedback", route: "" },
       ],
     },
-    { title: "Analytics", src: Chart, route: "/Analytics" },
+
+    {
+      title: "Notification and Alerts",
+      src: Chart,
+      route: "/pages/hospital/Analytics",
+    },
+    { title: "Analytics", src: Chart, route: "/pages/hospital/Analytics " },
   ];
   return (
     <div className="flex flex-row w-screen h-screen overflow-hidden">
@@ -73,7 +82,7 @@ export default function HospitalLayout({
 
       <div className="w-full h-full">
         <div className="px-3 p-1 h-fit">
-          <Header toggleMobileSidebar={() => setMobileSidebarOpen(true)} />
+          <TopNavbar />
         </div>
         <div className="my-4 px-7 w-full h-[92%]">{children}</div>
       </div>

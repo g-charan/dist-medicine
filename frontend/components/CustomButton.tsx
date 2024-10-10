@@ -1,3 +1,5 @@
+import { twMerge } from "tailwind-merge";
+
 type customprops = {
   className?: string;
   children?: any;
@@ -11,7 +13,10 @@ const CustomButton = ({ className, children, onClick, type }: customprops) => {
       <button
         type={type}
         onClick={onClick}
-        className={` ${className} border-[1px] bg-black hover:bg-white px-4  border-black rounded-[0.25rem] text-white hover:text-black transition-all duration-[250ms]`}
+        className={twMerge(
+          `  border-[1px] bg-black hover:bg-white px-4  border-black rounded-[0.25rem] text-white hover:text-black transition-all duration-[250ms]`,
+          className
+        )}
       >
         {children}
       </button>

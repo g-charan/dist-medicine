@@ -33,6 +33,43 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 const OrdersStatusItem = ({ status }: any) => {
+  const content = [
+    {
+      data: {
+        single: { time: "9 30am", action: "Eat" },
+        second: { time: "9 30am", action: "Eat" },
+      },
+    },
+    {
+      data: {
+        single: { time: "9 30am", action: "Eat" },
+      },
+    },
+    {
+      data: {
+        single: { time: "10am", action: "Sleep" },
+        second: { time: "630pm", action: "Exercise" },
+      },
+    },
+    {
+      data: {
+        single: { time: "10am", action: "Sleep" },
+        second: { time: "630pm", action: "Exercise" },
+      },
+    },
+    {
+      data: {
+        single: { time: "10am", action: "Sleep" },
+        second: { time: "630pm", action: "Exercise" },
+      },
+    },
+    {
+      data: {
+        single: { time: "10am", action: "Sleep" },
+        second: { time: "630pm", action: "Exercise" },
+      },
+    },
+  ];
   const [open, setOpen] = useState<boolean>();
   return (
     <div className="flex justify-between border-2 py-14 p-7 border-black rounded-md">
@@ -96,7 +133,7 @@ const OrdersStatusItem = ({ status }: any) => {
           </div>
           <div className="flex flex-col justify-center col-span-4 row-span-2 mt-10">
             <p className="mx-8">Order Details</p>
-            <TimelineComponent />
+            <TimelineComponent content={content} />
           </div>
         </div>
       </Sidebar>

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import CustomButton from "./CustomButton";
 import CustomInput from "./CustomInput";
 
@@ -27,7 +28,11 @@ const LoginForm = () => {
           >
             Forgot Password
           </a>
-          <CustomButton className="p-2 rounded-full w-full">Login</CustomButton>
+          <Link href={"/pages/hospital/dashboard"}>
+            <CustomButton className="p-2 rounded-full w-full">
+              Login
+            </CustomButton>
+          </Link>
         </div>
       </div>
     </div>

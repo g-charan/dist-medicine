@@ -23,7 +23,7 @@
   },
   "medicine": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Paracetamol 500mg",
       "batch": "PN2024A",
       "manufacturer": "PharmaCo",
@@ -113,7 +113,7 @@
       "certification": "321"
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "3",
       "batch": "4",
       "manufacturer": "2",
@@ -132,7 +132,7 @@
       "imageUrl": ""
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "431",
       "batch": "413",
       "manufacturer": "431",
@@ -151,7 +151,7 @@
       "imageUrl": ""
     },
     {
-      "id": 321,
+      "id": "321",
       "name": "",
       "batch": "",
       "manufacturer": "",
@@ -165,7 +165,7 @@
       "imageUrl": ""
     },
     {
-      "id": 2020,
+      "id": "2020",
       "name": "",
       "batch": "",
       "manufacturer": "",
@@ -176,6 +176,25 @@
       "storageLocation": "",
       "tempRequirements": "",
       "certification": "",
+      "imageUrl": ""
+    },
+    {
+      "id": 123,
+      "name": "Charan",
+      "batch": "56",
+      "manufacturer": "3213",
+      "expiry": "2024-10-02",
+      "manufactured": "2024-09-12",
+      "quantity": 20,
+      "category": "Tablet",
+      "reorderLevel": 200,
+      "reorderQuantity": 2000,
+      "status": "out_of_stock",
+      "minStockLevel": 100,
+      "maxStockLevel": 20000,
+      "storageLocation": "650",
+      "tempRequirements": "42 degree celsius",
+      "certification": "2",
       "imageUrl": ""
     }
   ]

@@ -16,9 +16,13 @@ input:not(:placeholder-shown):focus ~ .input-text {
   @apply text-blue-600 transform -translate-y-5 -translate-x-2 scale-75 bg-white font-semibold;
 }
 
+input:not(:placeholder-shown),
+.constant-color-input {
+  @apply border-2 border-black;
+}
+
 @layer base {
   :root {
-
     --background: 0 0% 100%;
 
     --foreground: 0 0% 3.9%;
@@ -67,10 +71,9 @@ input:not(:placeholder-shown):focus ~ .input-text {
 
     --chart-5: 27 87% 67%;
 
-    --radius: 0.5rem
+    --radius: 0.5rem;
   }
   .dark {
-
     --background: 0 0% 3.9%;
 
     --foreground: 0 0% 98%;
@@ -117,7 +120,7 @@ input:not(:placeholder-shown):focus ~ .input-text {
 
     --chart-4: 280 65% 60%;
 
-    --chart-5: 340 75% 55%
+    --chart-5: 340 75% 55%;
   }
 }
 

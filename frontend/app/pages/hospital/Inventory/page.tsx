@@ -149,7 +149,7 @@ export default function TablePage() {
         visible={addingnew}
         position="right"
         onHide={() => setaddingNew(false)}
-        className="bg-white  text-black w-[75%]  border-black"
+        className="bg-white  text-black w-[50%]  border-black"
       >
         <Addnew setAdding={setaddingNew} />
       </Sidebar>
@@ -157,7 +157,7 @@ export default function TablePage() {
         visible={details}
         position="right"
         onHide={() => setdetails(false)}
-        className="bg-white  text-black w-[75%]  border-black"
+        className="bg-white  text-black w-[40%]  border-black"
       >
         <MedicineDetails selectedMedicine={selectedMedicine} />
       </Sidebar>
@@ -205,9 +205,9 @@ export default function TablePage() {
             <CustomButton className=" flex items-center py-2">
               <i className="fa fa-edit align-bottom"></i>
             </CustomButton>
-            <CustomButton className=" flex items-center py-2">
+            {/* <CustomButton className=" flex items-center py-2">
               <i className="fa fa-trash align-bottom"></i>
-            </CustomButton>
+            </CustomButton> */}
             <CustomButton
               className=" flex items-center py-2"
               onClick={() => setfilter(true)}
@@ -217,49 +217,51 @@ export default function TablePage() {
           </div>
         </div>
       </div>
-      <table className="table-auto mx-2 w-full overflow-hidden">
-        <thead>
-          <tr>
-            <th className="">Item ID</th>
-            <th className="">Item Name</th>
-            <th className="">Batch Number</th>
-            <th className="">Manufacturer</th>
-            <th className="">Expiry Date</th>
-            <th className="">Manufactured Date</th>
-            <th className="">Quantity In Stock</th>
-            <th className="">Category</th>
+      <div className=" w-full overflow-hidden border-2 rounded-md">
+        <table className="table-auto  w-full overflow-hidden ">
+          <thead>
+            <tr className=" bg-zinc-100">
+              <th className="  py-4 border-r-2">Item ID</th>
+              <th className="  border-r-2">Item Name</th>
+              <th className=" border-r-2">Batch Number</th>
+              <th className=" border-r-2">Manufacturer</th>
+              <th className=" border-r-2">Expiry Date</th>
+              <th className=" border-r-2">Manufactured Date</th>
+              <th className=" border-r-2">Quantity In Stock</th>
+              <th className=" border-r-2">Category</th>
 
-            <th className="">Reorder Quantity</th>
+              <th className=" border-r-2">Reorder Quantity</th>
 
-            <th className="">Minimum Stock Level</th>
-            <th className="">Maximum Stock Level</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tableMainData &&
-            tableMainData.map((item: Medicine, index: any) => (
-              <tr
-                key={index}
-                className="hover:bg-gray-100 cursor-pointer border-t-2 border-b-2"
-                onClick={() => setSelection(item)}
-              >
-                <td className="text-center ">{item.id}</td>
-                <td className="text-center ">{item.name}</td>
-                <td className=" text-center">{item.batch}</td>
-                <td className=" text-center">{item.manufacturer}</td>
-                <td className=" text-center">{item.expiry}</td>
-                <td className=" text-center">{item.manufactured}</td>
-                <td className=" text-center">{item.quantity}</td>
-                <td className=" text-center">{item.category}</td>
+              <th className=" border-r-2">Minimum Stock Level</th>
+              <th className="">Maximum Stock Level</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tableMainData &&
+              tableMainData.map((item: Medicine, index: any) => (
+                <tr
+                  key={index}
+                  className="hover:bg-gray-100 cursor-pointer border-t-2 border-b-2"
+                  onClick={() => setSelection(item)}
+                >
+                  <td className="   text-center py-4 ">{item.id}</td>
+                  <td className="   text-center ">{item.name}</td>
+                  <td className="  text-center  ">{item.batch}</td>
+                  <td className="   text-center ">{item.manufacturer}</td>
+                  <td className="   text-center ">{item.expiry}</td>
+                  <td className="  text-center  ">{item.manufactured}</td>
+                  <td className="  text-center  ">{item.quantity}</td>
+                  <td className="  text-center  ">{item.category}</td>
 
-                <td className=" text-center">{item.reorderQuantity}</td>
+                  <td className="  text-center  ">{item.reorderQuantity}</td>
 
-                <td className=" text-center">{item.minStockLevel}</td>
-                <td className=" text-center">{item.maxStockLevel}</td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+                  <td className="  text-center  ">{item.minStockLevel}</td>
+                  <td className=" ">{item.maxStockLevel}</td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

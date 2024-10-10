@@ -1,16 +1,14 @@
 "use client";
 
-import CustomButton from "@/components/CustomButton";
 import RequestNewOrder from "@/components/Orders/RequestNewOrder";
-import { Stepper } from "primereact/stepper";
-import { StepperPanel } from "primereact/stepperpanel";
 import { useRef } from "react";
 
 const page = () => {
   const stepperRef = useRef<any>(null);
   return (
     <div className="card h-full">
-      <Stepper ref={stepperRef}>
+      <RequestNewOrder />
+      {/* <Stepper ref={stepperRef}>
         <StepperPanel header="Initial Form">
           <div className="flex flex-column h-fit  w-full">
             <div className=" w-full h-full">
@@ -48,7 +46,7 @@ const page = () => {
             </CustomButton>
           </div>
         </StepperPanel>
-      </Stepper>
+      </Stepper> */}
     </div>
   );
 };

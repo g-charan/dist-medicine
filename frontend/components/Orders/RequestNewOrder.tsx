@@ -1,12 +1,24 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import CustomButton from "../CustomButton";
+import CustomFieldInput from "../CustomFieldInput";
+
+import { Toast } from "primereact/toast";
 
 const RequestNewOrder = () => {
+  const toast = useRef<any>(null);
   //   const postquery = useMutation({
   //     mutationFn: createPost,
   //     onSuccess: () => {
   //       console.log("posted");
   //     },
   //   });
+  const show = () => {
+    toast.current.show({
+      severity: "info",
+      summary: "Info",
+      detail: "Message Content",
+    });
+  };
   const [formData, setformData] = useState<any>({
     id: undefined,
     name: "",
@@ -28,261 +40,58 @@ const RequestNewOrder = () => {
   });
 
   return (
-    <div className="w-full">
-      <p className="py-2 font-bold text-lg">Add New</p>
-
-      <div className="gap-2 grid grid-cols-1 sm:grid-cols-2 p-7">
-        <div className="mb-2">
-          <label className="block font-medium text-gray-700 text-sm">
-            Item ID
-          </label>
-          <input
-            name="id"
-            value={formData.id}
-            onChange={(e) =>
-              setformData({ ...formData, id: Number(e.target.value) })
-            }
-            type="number"
-            className="block border-2 border-gray-300 mt-1 py-2 pr-10 pl-3 focus:border-blue-500 rounded-md w-full focus:outline-none sm:text-sm"
-          />
+    <div className="h-full">
+      <Toast ref={toast} />
+      {/* FIELDS */}
+      <div>
+        <p className="font-semibold text-gray-400 text-sm"> Adding new</p>
+        <p className="font-bold text-lg">Medicine Details</p>
+      </div>
+      <div className="grid grid-cols-6 grid-rows-4 mt-10 h-2/5">
+        <div className="col-span-2 p-2 self-center">
+          <CustomFieldInput Label={"Item ID"} placeholder={"Item iD"} />
         </div>
-        <div className="mb-2">
-          <label className="block font-medium text-gray-700 text-sm">
-            Item Name
-          </label>
-          <input
-            name="name"
-            value={formData.name}
-            onChange={(e) => setformData({ ...formData, name: e.target.value })}
-            type="text"
-            className="block border-2 border-gray-300 mt-1 py-2 pr-10 pl-3 rounded-md w-full sm:text-sm"
-          />
+        <div className="col-span-2 p-2 self-center">
+          <CustomFieldInput Label={"Item Name"} placeholder={"Item Name"} />
         </div>
-        <div className="mb-2">
-          <label className="block font-medium text-gray-700 text-sm">
-            Batch Number
-          </label>
-          <input
-            name="batch"
-            value={formData.batch}
-            onChange={(e) =>
-              setformData({ ...formData, batch: e.target.value })
-            }
-            type="text"
-            className="block border-2 border-gray-300 mt-1 py-2 pr-10 pl-3 rounded-md w-full sm:text-sm"
-          />
+        <div className="col-span-2 p-2 self-center">
+          <CustomFieldInput Label={"Item Name"} placeholder={"Item Name"} />
         </div>
-        <div className="mb-2">
-          <label className="block font-medium text-gray-700 text-sm">
-            Manufacturer
-          </label>
-          <input
-            name="manufacturer"
-            value={formData.manufacturer}
-            onChange={(e) =>
-              setformData({ ...formData, manufacturer: e.target.value })
-            }
-            type="text"
-            className="block border-2 border-gray-300 mt-1 py-2 pr-10 pl-3 rounded-md w-full sm:text-sm"
-          />
+        <div className="col-span-3 p-2 self-center">
+          <CustomFieldInput Label={"Item Name"} placeholder={"Item Name"} />
         </div>
-        <div className="mb-2">
-          <label className="block font-medium text-gray-700 text-sm">
-            Expiry Date
-          </label>
-          <input
-            name="expiry"
-            value={formData.expiry}
-            onChange={(e) =>
-              setformData({ ...formData, expiry: e.target.value })
-            }
-            type="date"
-            className="block border-2 border-gray-300 mt-1 py-2 pr-10 pl-3 rounded-md w-full sm:text-sm"
-          />
+        <div className="col-span-3 p-2 self-center">
+          <CustomFieldInput Label={"Item Name"} placeholder={"Item Name"} />
         </div>
-        <div className="mb-2">
-          <label className="block font-medium text-gray-700 text-sm">
-            Manufactured Date
-          </label>
-          <input
-            name="manufactured"
-            value={formData.manufactured}
-            onChange={(e) =>
-              setformData({ ...formData, manufactured: e.target.value })
-            }
-            type="date"
-            className="block border-2 border-gray-300 mt-1 py-2 pr-10 pl-3 rounded-md w-full sm:text-sm"
-          />
+        <div className="col-span-2 p-2 self-center">
+          <CustomFieldInput Label={"Item Name"} placeholder={"Item Name"} />
         </div>
-        <div className="mb-2">
-          <label className="block font-medium text-gray-700 text-sm">
-            Quantity in Stock
-          </label>
-          <input
-            name="quantity"
-            value={formData.quantity}
-            onChange={(e) =>
-              setformData({ ...formData, quantity: Number(e.target.value) })
-            }
-            type="number"
-            className="block border-2 border-gray-300 mt-1 py-2 pr-10 pl-3 rounded-md w-full sm:text-sm"
-          />
+        <div className="col-span-2 p-2 self-center">
+          <CustomFieldInput Label={"Item Name"} placeholder={"Item Name"} />
         </div>
-        <div className="mb-2">
-          <label className="block font-medium text-gray-700 text-sm">
-            Category (Tablet, Syrup,etc.)
-          </label>
-          <input
-            name="category"
-            type="text"
-            value={formData.category}
-            onChange={(e) =>
-              setformData({ ...formData, category: e.target.value })
-            }
-            className="block border-2 border-gray-300 mt-1 py-2 pr-10 pl-3 rounded-md w-full sm:text-sm"
-          />
+        <div className="col-span-2 p-2 self-center">
+          <CustomFieldInput Label={"Item Name"} placeholder={"Item Name"} />
         </div>
-        <div className="mb-2">
-          <label className="block font-medium text-gray-700 text-sm">
-            Reorder Level
-          </label>
-          <input
-            name="reorderLevel"
-            type="number"
-            value={formData.reorderLevel}
-            onChange={(e) =>
-              setformData({ ...formData, reorderLevel: Number(e.target.value) })
-            }
-            className="block border-2 border-gray-300 mt-1 py-2 pr-10 pl-3 rounded-md w-full sm:text-sm"
-          />
+        <div className="col-span-2 p-2 self-center">
+          <CustomFieldInput Label={"Item Name"} placeholder={"Item Name"} />
         </div>
-        <div className="mb-2">
-          <label className="block font-medium text-gray-700 text-sm">
-            Reorder Quantity
-          </label>
-          <input
-            value={formData.reorderQuantity}
-            onChange={(e) =>
-              setformData({
-                ...formData,
-                reorderQuantity: Number(e.target.value),
-              })
-            }
-            name="reorderQuantity"
-            type="number"
-            className="block border-2 border-gray-300 mt-1 py-2 pr-10 pl-3 rounded-md w-full sm:text-sm"
-          />
+        <div className="col-span-2 p-2 self-center">
+          <CustomFieldInput Label={"Item Name"} placeholder={"Item Name"} />
         </div>
-        <div className="mb-2">
-          <label className="block font-medium text-gray-700 text-sm">
-            Status (In Stock/Out of Stock)
-          </label>
-          <select
-            value={formData.status}
-            onChange={(e) =>
-              setformData({
-                ...formData,
-                status: e.target.value,
-              })
-            }
-            name="status"
-            className="block border-2 border-gray-300 mt-1 py-2 pr-10 pl-3 focus:border-blue-500 rounded-md w-full focus:outline-none sm:text-sm"
-          >
-            <option value="in_stock">In Stock</option>
-            <option value="out_of_stock">Out of Stock</option>
-          </select>
-        </div>
-        <div className="mb-2">
-          <label className="block font-medium text-gray-700 text-sm">
-            Minimum Stock Level
-          </label>
-          <input
-            value={formData.minStockLevel}
-            onChange={(e) =>
-              setformData({
-                ...formData,
-                minStockLevel: Number(e.target.value),
-              })
-            }
-            name="minStockLevel"
-            type="number"
-            className="block border-2 border-gray-300 mt-1 py-2 pr-10 pl-3 rounded-md w-full sm:text-sm"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block font-medium text-gray-700 text-sm">
-            Maximum Stock Level
-          </label>
-          <input
-            value={formData.maxStockLevel}
-            onChange={(e) =>
-              setformData({
-                ...formData,
-                maxStockLevel: Number(e.target.value),
-              })
-            }
-            name="maxStockLevel"
-            type="number"
-            className="block border-2 border-gray-300 mt-1 py-2 pr-10 pl-3 rounded-md w-full sm:text-sm"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block font-medium text-gray-700 text-sm">
-            Storage Location
-          </label>
-          <input
-            value={formData.storageLocation}
-            onChange={(e) =>
-              setformData({
-                ...formData,
-                storageLocation: e.target.value,
-              })
-            }
-            name="storageLocation"
-            type="text"
-            className="block border-2 border-gray-300 mt-1 py-2 pr-10 pl-3 rounded-md w-full sm:text-sm"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block font-medium text-gray-700 text-sm">
-            Temperature Requirements
-          </label>
-          <input
-            name="tempRequirements"
-            type="text"
-            value={formData.tempRequirements}
-            onChange={(e) =>
-              setformData({
-                ...formData,
-                tempRequirements: e.target.value,
-              })
-            }
-            className="block border-2 border-gray-300 mt-1 py-2 pr-10 pl-3 rounded-md w-full sm:text-sm"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block font-medium text-gray-700 text-sm">
-            Certification/Patents
-          </label>
-          <input
-            name="certification"
-            value={formData.certification}
-            onChange={(e) =>
-              setformData({
-                ...formData,
-                certification: e.target.value,
-              })
-            }
-            type="text"
-            className="block border-2 border-gray-300 mt-1 py-2 pr-10 pl-3 rounded-md w-full sm:text-sm"
-          />
+        <div className="col-span-2 p-2 self-center">
+          <CustomFieldInput Label={"Item Name"} placeholder={"Item Name"} />
         </div>
       </div>
-      {/* <div className="px-7">
-        <CustomButton onClick={() => console.log("Submited")}>
-          Submit
-        </CustomButton>
-      </div> */}
+      <div className="flex justify-end mt-10 px-7 py-4 border-t-2">
+        <div className="flex space-x-2">
+          <CustomButton onClick={"none"} className="px-2 py-1">
+            Cancel
+          </CustomButton>
+          <CustomButton onClick={show} className="px-2 py-1">
+            Submit
+          </CustomButton>
+        </div>
+      </div>
     </div>
   );
 };

@@ -8,11 +8,52 @@ import {
   TimelineSeparator,
 } from "@mui/lab";
 
-const TimelineComponent = () => {
+const TimelineComponent = ({ content }: any) => {
   return (
-    <div>
+    <div className="h-[40vh] overflow-auto">
       <Timeline position="alternate">
-        <TimelineItem>
+        {content.map((data: any) => (
+          <>
+            {data.data.second ? (
+              <>
+                <TimelineItem>
+                  <TimelineOppositeContent color="text.secondary">
+                    {data.data.single.time}
+                  </TimelineOppositeContent>
+                  <TimelineSeparator>
+                    <TimelineDot />
+                    <TimelineConnector />
+                  </TimelineSeparator>
+                  <TimelineContent>{data.data.single.action}</TimelineContent>
+                </TimelineItem>
+                <TimelineItem>
+                  <TimelineOppositeContent color="text.secondary">
+                    {data.data.second.time}
+                  </TimelineOppositeContent>
+                  <TimelineSeparator>
+                    <TimelineDot />
+                    <TimelineConnector />
+                  </TimelineSeparator>
+                  <TimelineContent>{data.data.second.action}</TimelineContent>
+                </TimelineItem>
+              </>
+            ) : (
+              <>
+                <TimelineItem>
+                  <TimelineOppositeContent color="text.secondary">
+                    {data.data.single.time}
+                  </TimelineOppositeContent>
+                  <TimelineSeparator>
+                    <TimelineDot />
+                    <TimelineConnector />
+                  </TimelineSeparator>
+                  <TimelineContent>{data.data.single.action}</TimelineContent>
+                </TimelineItem>
+              </>
+            )}
+          </>
+        ))}
+        {/* <TimelineItem>
           <TimelineOppositeContent color="text.secondary">
             09:30 am
           </TimelineOppositeContent>
@@ -31,8 +72,8 @@ const TimelineComponent = () => {
             <TimelineConnector />
           </TimelineSeparator>
           <TimelineContent>Code</TimelineContent>
-        </TimelineItem>
-        <TimelineItem>
+        </TimelineItem> */}
+        {/* <TimelineItem>
           <TimelineOppositeContent color="text.secondary">
             12:00 am
           </TimelineOppositeContent>
@@ -51,7 +92,7 @@ const TimelineComponent = () => {
             <TimelineConnector />
           </TimelineSeparator>
           <TimelineContent>Repeat</TimelineContent>
-        </TimelineItem>
+        </TimelineItem> */}
       </Timeline>
     </div>
   );
